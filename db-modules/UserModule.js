@@ -83,7 +83,23 @@ const saveuser =(user,callback)=>{
                                     }
                                     else if   (user.tcode==='update'){
                                         console.log('User Update');
+                                        console.log(user)
 
+                                    }
+                                    else if   (user.tcode==='delete'){
+                                        console.log('User DELETE');
+                                        console.log(user)
+
+                                        userModule.findOneAndRemove({username:user.username},(err,res)=>{
+                                            if(err)
+                                              {callback(err)
+                                            
+                                            }else{
+                                                console.log('Done');
+                                                callback(null,res)
+                                            }
+
+                                        })
 
                                     }
                                     else {
