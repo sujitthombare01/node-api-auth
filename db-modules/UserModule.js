@@ -92,4 +92,23 @@ const saveuser =(user,callback)=>{
                                     }
 };
 
-module.exports ={  userModule ,findUserByUsername,saveuser  }
+const getUserDetails=(query,callback)=>{
+    userModule.find({},(err,users)=>{
+        if(err)
+        {
+            console.log('User Find all Error')
+            console.log(err)
+            callback(err)
+        }
+        else{
+
+            
+            callback(null,users);
+            
+        }
+                                        
+        });
+
+}
+
+module.exports ={  userModule ,findUserByUsername,saveuser,getUserDetails  }
